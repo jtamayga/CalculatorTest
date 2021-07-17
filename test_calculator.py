@@ -1,47 +1,33 @@
 import unittest
+import calc
 
-def sumar(num1,num2):
-    suma = num1 + num2
-    print("el resultado de la suma es: ", suma)
-    return suma 
 
-def restar(num1,num2):
-    resta = num1 - num2
-    print("el resultado de la resta es: ", resta)
-    return resta
+class TestCalc(unittest.TestCase):
 
-def multiplicar(num1,num2):
-    multiplicacion = num1 * num2
-    print("el resultado de la multiplicacion es: ", multiplicacion)
-    return multiplicacion 
+    def test_add(self):
+        self.assertEqual(calc.add(10, 5), 15)
+        self.assertEqual(calc.add(-1, 1), 0)
+        self.assertEqual(calc.add(-1, -1), -2)
 
-def dividir(num1,num2):
-    division = num1 / num2
-    print("el resultado de la division es: ", division)
-    return division
+    def test_subtract(self):
+        self.assertEqual(calc.subtract(10, 5), 5)
+        self.assertEqual(calc.subtract(-1, 1), -2)
+        self.assertEqual(calc.subtract(-1, -1), 0)
 
-num1 = input("ingrese un numero: ")
-num2 = input("ingrese un numero: ")
+    def test_multiply(self):
+        self.assertEqual(calc.multiply(10, 5), 50)
+        self.assertEqual(calc.multiply(-1, 1), -1)
+        self.assertEqual(calc.multiply(-1, -1), 1)
 
-class test_resultados(unittest.TestCase):
-    
-    def test_suma(self):
-        result_suma = num1 + num2
-        self.assertEqual(sumar(num1,num2), result_suma)
+    def test_divide(self):
+        self.assertEqual(calc.divide(10, 5), 2)
+        self.assertEqual(calc.divide(-1, 1), -1)
+        self.assertEqual(calc.divide(-1, -1), 1)
+        self.assertEqual(calc.divide(5, 2), 2.5)
 
-    def test_resta(self):
-        result_resta = num1 - num2
-        self.assertEqual(restar(num1,num2), result_resta)
+        with self.assertRaises(ValueError):
+            calc.divide(10, 0)
 
-    def test_multiplicar(self):
-        result_multiplicar = num1 * num2
-        self.assertEqual(multiplicar(num1,num2), result_multiplicar)
-
-    def test_dividir(self):
-        result_dividir = num1 / num2
-        self.assertEqual(dividir(num1,num2), result_dividir)
-
-     
 
 if __name__ == '__main__':
     unittest.main()
