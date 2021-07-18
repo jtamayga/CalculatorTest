@@ -20,8 +20,8 @@ def dividir(num1,num2):
     print("el resultado de la division es: ", division)
     return division
 
-num1 = input("ingrese un numero: ")
-num2 = input("ingrese un numero: ")
+num1 = 2
+num2 = 3
 
 class test_resultados(unittest.TestCase):
     
