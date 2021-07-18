@@ -19,7 +19,7 @@ def divide(x, y):
     """Divide Function"""
     if y == 0:
         raise ValueError('Can not divide by zero!')
-    return float(x / y)
+    return x / y
 
 class TestCalc(unittest.TestCase):
 
@@ -44,7 +44,7 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(divide(-1, -1), 1)
 
         with self.assertRaises(ValueError):
-            calc.divide(10, 0)
+            divide(10, 0)
 
 
 if __name__ == '__main__':
