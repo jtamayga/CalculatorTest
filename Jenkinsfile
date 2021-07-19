@@ -13,6 +13,18 @@ pipeline {
                 sh 'python calculator.py'
             }
         }
+        stage('Static Code Analysis'){
+            steps {
+                withSonarQubeEnv('SonarQube'){
+                    sh "${scannerHome}/opt/sonar-scanner/"
+                }
+            }
+        }
+        stage('Quality Gate'){
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
     }
 }
 
